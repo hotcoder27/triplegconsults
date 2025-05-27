@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-const CTA = () => {
+const Cta = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -227,4 +227,4 @@ const CTA = () => {
   )
 }
 
-export default CTA
+export default Cta

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-const FAQ = () => {
+const Faq = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [openFAQ, setOpenFAQ] = useState(0)
   const [searchTerm, setSearchTerm] = useState("")
@@ -375,4 +375,4 @@ const FAQ = () => {
   )
 }
 
-export default FAQ
+export default Faq
