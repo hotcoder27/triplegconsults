@@ -8,8 +8,8 @@ import Contact from "./pages/Contact"
 import ServicesPage from "./pages/ServicesPage"
 import AboutPage from "./pages/AboutPage"
 import Testimonials from "./components/Testimonials"
-import Cta from "./components/Cta"
 import Faq from "./components/Faqs"
+import CallToAction from "./components/CallToAction"
 
 
 const App = () => {
@@ -37,7 +37,7 @@ const App = () => {
                     <Testimonials />
                   </div>
                   <div className="space-y-16 md:space-y-20 lg:space-y-24">
-                    <Cta />
+                    <CallToAction />
                   </div>
                   <div className="space-y-16 md:space-y-20 lg:space-y-24">
                     <Faq />
