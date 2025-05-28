@@ -95,7 +95,7 @@ const About = () => {
                 {features.map((feature, index) => (
                   <div
                     key={index}
-                    className={`group p-4 rounded-xl bg-white/60 backdrop-blur-sm border border-gray-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 ${
+                    className={`group p-4 rounded-xl bg-primary backdrop-blur-sm border border-gray-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 ${
                       isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                     }`}
                     style={{
@@ -105,10 +105,10 @@ const About = () => {
                     <div className="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">
                       {feature.icon}
                     </div>
-                    <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-primary transition-colors duration-300">
+                    <h3 className="font-semibold text-white mb-2 group-hover:text-primary transition-colors duration-300">
                       {feature.title}
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+                    <p className="text-sm text-white leading-relaxed">{feature.description}</p>
                   </div>
                 ))}
               </div>
@@ -116,7 +116,7 @@ const About = () => {
               {/* CTA Button */}
               <Link
                 to="/about"
-                className="inline-flex items-center bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
+                className="inline-flex items-center bg-white text-primary px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
               >
                 Learn More About Us
                 <svg

@@ -109,17 +109,17 @@ const Testimonials = () => {
         {/* Testimonials Carousel */}
         <div className="max-w-4xl mx-auto">
           <div
-            className={`relative bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 md:p-12 transform transition-all duration-1000 delay-600 ${
+            className={`relative bg-primary rounded-2xl p-8 md:p-12 transform transition-all duration-1000 delay-600 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
             {/* Quote Icon */}
-            <div className="absolute top-6 left-6 text-6xl text-accent/20">"</div>
+            <div className="absolute top-6 left-6 text-6xl text-accent">"</div>
 
             {/* Testimonial Content */}
             <div className="relative z-10 text-center">
               <div className="mb-8">
-                <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-6 italic">
+                <p className="text-xl md:text-2xl text-white leading-relaxed mb-6 italic">
                   {testimonials[currentTestimonial].content}
                 </p>
 
@@ -141,9 +141,9 @@ const Testimonials = () => {
                   className="w-16 h-16 rounded-full object-cover border-4 border-white shadow-lg"
                 />
                 <div className="text-left">
-                  <div className="font-bold text-gray-800 text-lg">{testimonials[currentTestimonial].name}</div>
-                  <div className="text-primary font-medium">{testimonials[currentTestimonial].role}</div>
-                  <div className="text-gray-600 text-sm">{testimonials[currentTestimonial].company}</div>
+                  <div className="font-bold text-white text-lg">{testimonials[currentTestimonial].name}</div>
+                  <div className="text-white/100 font-medium">{testimonials[currentTestimonial].role}</div>
+                  <div className="text-white text-sm">{testimonials[currentTestimonial].company}</div>
                 </div>
               </div>
             </div>

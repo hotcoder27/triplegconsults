@@ -83,7 +83,7 @@ const Navbar = () => {
               to="/contact"
               className="relative bg-primary from-primary to-primary/90 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 overflow-hidden"
             >
-              <span className="relative z-10">Get Started</span>
+              <span className="relative z-10">Book Consultation</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
           </div>

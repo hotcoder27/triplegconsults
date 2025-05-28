@@ -1,71 +1,77 @@
-import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
-import { SERVICES } from "../constants"
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { SERVICES } from "../constants";
 
 const Services = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const [currentServiceIndex, setCurrentServiceIndex] = useState(0)
+  const [isVisible, setIsVisible] = useState(false);
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
-      { threshold: 0.1 },
-    )
+      { threshold: 0.1 }
+    );
 
-    const element = document.getElementById("services-section")
+    const element = document.getElementById("services-section");
     if (element) {
-      observer.observe(element)
+      observer.observe(element);
     }
 
     return () => {
       if (element) {
-        observer.unobserve(element)
+        observer.unobserve(element);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   useEffect(() => {
     // Rotate through services for highlighting
     const interval = setInterval(() => {
-      setCurrentServiceIndex((prev) => (prev + 1) % SERVICES.length)
-    }, 4000)
+      setCurrentServiceIndex((prev) => (prev + 1) % SERVICES.length);
+    }, 4000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section id="services-section" className="py-6 px-8 bg-white relative overflow-hidden">
+    <section id="services-section" className="py-15 px-8 bg-primary relative overflow-hidden text-accent rounded-lg mb-6">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div
-            className={`inline-flex items-center px-4 py-2 my-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6 transform transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+            className={`inline-flex items-center px-4 py-2 my-2 rounded-full bg-white/10 text-white font-medium text-sm mb-6 transform transition-all duration-1000 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
           >
-            <span className="w-2 h-2 bg-primary rounded-full bg-accent mr-2 animate-pulse"></span>
+            <span className="w-2 h-2 bg-accent rounded-full bg-light-tone mr-2 animate-pulse"></span>
             Our Expertise
           </div>
 
           <h2
-            className={`text-4xl md:text-5xl font-bold text-gray-800 mb-6 transform transition-all duration-1000 delay-200 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+            className={`text-4xl md:text-5xl font-bold text-white mb-6 transform transition-all duration-1000 delay-200 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
           >
-            <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-accent">
+            <span className="bg-gradient-to-r from-white to-light-tone bg-clip-text text-accent">
               Comprehensive
             </span>{" "}
             Financial Solutions
           </h2>
 
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed transform transition-all duration-1000 delay-400 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+            className={`text-xl text-white/80 max-w-3xl mx-auto leading-relaxed transform transition-all duration-1000 delay-400 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
           >
             From accounting and tax planning to strategic business advisory, we provide end-to-end financial services
             tailored to your unique needs.
@@ -77,35 +83,35 @@ const Services = () => {
           {SERVICES.map((service, index) => (
             <div
               key={index}
-              className={`group relative p-8 rounded-2xl bg-white border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 ${
-                currentServiceIndex === index ? "ring-2 ring-primary/20 shadow-lg scale-105" : ""
+              className={`group relative p-8 rounded-2xl bg-white/10 border border-white/20 hover:border-white/50 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 ${
+                currentServiceIndex === index ? "ring-2 ring-white/30 shadow-lg scale-105" : ""
               } ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
               style={{
                 transitionDelay: isVisible ? `${600 + index * 200}ms` : "0ms",
               }}
             >
               {/* Background Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-light-tone/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               {/* Content */}
               <div className="relative z-10">
                 {/* Icon */}
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300 text-white">
                   {service.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-light-tone transition-colors duration-300">
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
+                <p className="text-white/80 leading-relaxed mb-6">{service.description}</p>
 
                 {/* Learn More Link */}
                 <Link
                   to="/services"
-                  className="inline-flex items-center text-primary font-semibold hover:text-primary/80 transition-colors duration-300 group-hover:translate-x-2 transform"
+                  className="inline-flex items-center text-light-tone font-semibold hover:text-white transition-colors duration-300 group-hover:translate-x-2 transform"
                 >
                   Learn More
                   <svg
@@ -120,23 +126,25 @@ const Services = () => {
               </div>
 
               {/* Hover Effect Border */}
-              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-primary/20 transition-colors duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-white/30 transition-colors duration-500"></div>
             </div>
           ))}
         </div>
 
         {/* CTA Section */}
         <div
-          className={`text-center transform transition-all duration-1000 delay-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+          className={`text-center transform transition-all duration-1000 delay-1000 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
         >
-          <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl p-8 md:p-12">
-            <h3 className="text-3xl font-bold text-gray-800 mb-4">Ready to Transform Your Financial Future?</h3>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <div className="bg-white/10 rounded-2xl p-8 md:p-12">
+            <h3 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Financial Future?</h3>
+            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
               Let our expert team help you achieve your financial goals with personalized strategies and proven results.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center bg-primary text-white from-primary to-primary/90 px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center bg-white text-primary px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               Start Your Journey
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -147,7 +155,7 @@ const Services = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Services
+export default Services;
