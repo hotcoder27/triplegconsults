@@ -119,7 +119,7 @@ const Faq = () => {
   const categories = [...new Set(faqs.map((faq) => faq.category))]
 
   return (
-    <section id="enhanced-faq-section" className="py-10 bg-white relative overflow-hidden">
+    <section id="enhanced-faq-section" className="pt-10 bg-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
@@ -224,7 +224,7 @@ const Faq = () => {
             {(searchTerm ? filteredFAQs : faqs).map((faq, index) => (
               <div
                 key={index}
-                className={`group bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 transform ${
+                className={`group bg-white border border-primary rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 transform ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                 }`}
                 style={{
