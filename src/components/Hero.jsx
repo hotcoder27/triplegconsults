@@ -5,9 +5,30 @@ import { businessMainImg } from "../utils"
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     setIsVisible(true)
+
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 2,
+        y: (e.clientY / window.innerHeight - 0.5) * 2,
+      })
+    }
+
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("scroll", handleScroll)
+    }
   }, [])
 
   const scrollToServices = () => {
@@ -18,176 +39,198 @@ const Hero = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
-      {/* Background Elements */}
+    <section className="relative h-screen overflow-hidden bg-black">
+      {/* Background Video Effect */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-primary/70"></div>
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `url(${businessMainImg || "/placeholder.svg"})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            transform: `scale(1.1) translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`,
+            transition: "transform 0.1s ease-out",
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30"></div>
+      </div>
+
+      {/* Animated Particles - Reduced on mobile */}
       <div className="absolute inset-0 overflow-hidden">
-
-        {/* Animated Background Shapes */}
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-3xl animate-pulse delay-500"></div>
-
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        {[...Array(25)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-accent/30 rounded-full animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 3}s`,
+              display: i > 15 && window.innerWidth < 640 ? "none" : "block", // Show fewer particles on mobile
+            }}
+          ></div>
+        ))}
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-          {/* Left Content */}
-          <div className="text-center lg:text-left">
-            {/* Badge */}
-            <div
-              className={`inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-primary font-medium text-sm mb-8 transform transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
-            >
-              <span className="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"></span>
-              Trusted Financial Partners Since 2000
-            </div>
+      <div className="relative z-10 h-full flex items-center justify-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Cinematic Badge */}
+          <div
+            className={`inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-white/10 backdrop-blur-md border border-accent/30 text-accent font-medium text-xs sm:text-sm mb-6 sm:mb-8 transform transition-all duration-1500 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+            }`}
+            style={{
+              transform: `translateY(${isVisible ? 0 : 48}px) translateX(${mousePosition.x * -5}px)`,
+            }}
+          >
+            <span className="w-2 h-2 sm:w-3 sm:h-3 bg-accent rounded-full mr-2 sm:mr-3 animate-pulse"></span>
+            TRUSTED FINANCIAL PARTNERS SINCE 2000
+            <span className="w-2 h-2 sm:w-3 sm:h-3 bg-accent rounded-full ml-2 sm:ml-3 animate-pulse hidden sm:block"></span>
+          </div>
 
-            {/* Main Heading */}
-            <h1
-              className={`text-2xl md:text-3xl lg:text-6xl font-bold mb-6 transform transition-all duration-1000 delay-200 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
-            >
-              <span className="text-primary">
-                {SITE_TAGLINE.split(" ").slice(0, 2).join(" ")}
-              </span>
-              <br />
-              <span className="text-gray-800">{SITE_TAGLINE.split(" ").slice(2).join(" ")}</span>
-            </h1>
+          {/* Cinematic Title */}
+          <h1
+            className={`text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-8 leading-none transform transition-all duration-2000 delay-300 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
+            }`}
+            style={{
+              background: "linear-gradient(135deg, #ffffff 0%, #f0b429 50%, #ffffff 100%)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              textShadow: "0 0 40px rgba(240, 180, 41, 0.3)",
+              transform: `translateY(${isVisible ? 0 : 64}px) translateX(${mousePosition.x * -8}px)`,
+            }}
+          >
+            {SITE_TAGLINE.split(" ").slice(0, 2).join(" ")}
+            <br />
+            <span className="text-white">{SITE_TAGLINE.split(" ").slice(2).join(" ")}</span>
+          </h1>
 
-            {/* Description */}
-            <p
-              className={`text-lg md:text-xl text-gray-600 mb-12 max-w-2xl mx-auto lg:mx-0 leading-relaxed transform transition-all duration-1000 delay-400 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
-            >
-              {SITE_DESCRIPTION}
-            </p>
+          {/* Cinematic Description */}
+          <p
+            className={`text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 sm:mb-12 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto leading-relaxed font-light transform transition-all duration-2000 delay-600 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+            }`}
+            style={{
+              transform: `translateY(${isVisible ? 0 : 48}px) translateX(${mousePosition.x * 3}px)`,
+            }}
+          >
+            {SITE_DESCRIPTION}
+          </p>
 
-            {/* CTA Buttons */}
-            <div
-              className={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12 transform transition-all duration-1000 delay-600 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+          {/* Cinematic CTA Buttons */}
+          <div
+            className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8 sm:mb-16 transform transition-all duration-2000 delay-900 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+            }`}
+            style={{
+              transform: `translateY(${isVisible ? 0 : 48}px)`,
+            }}
+          >
+            <Link
+              to="/contact"
+              className="group relative bg-accent text-primary w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-base sm:text-md shadow-2xl hover:shadow-accent/25 transform hover:scale-105 transition-all duration-500 overflow-hidden"
+              style={{
+                boxShadow: "0 20px 40px rgba(240, 180, 41, 0.3), 0 0 0 1px rgba(240, 180, 41, 0.1)",
+                maxWidth: "280px",
+              }}
             >
-              <Link
-                to="/contact"
-                className="group relative bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center">
-                  Book Consultation
-                  <svg
-                    className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </Link>
-
-              <button
-                onClick={scrollToServices}
-                className="cursor-pointer group flex items-center px-8 py-4 rounded-xl font-semibold text-lg text-primary border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
-              >
-                Explore Services
+              <span className="relative z-10 flex items-center justify-center">
+                BOOK CONSULTATION
                 <svg
-                  className="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform duration-300"
+                  className="w-5 h-5 ml-2 sm:ml-3 group-hover:translate-x-2 transition-transform duration-500"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </button>
-            </div>
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-accent/90 to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+            </Link>
 
-            {/* Stats */}
-            <div
-              className={`grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto lg:mx-0 transform transition-all duration-1000 delay-800 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+            <button
+              onClick={scrollToServices}
+              className="group flex items-center justify-center w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-base sm:text-md text-white border-2 border-white/30 hover:border-accent hover:bg-white/10 backdrop-blur-md transition-all duration-500"
+              style={{
+                boxShadow: "0 20px 40px rgba(255, 255, 255, 0.1)",
+                maxWidth: "280px",
+              }}
             >
-              {[
-                { number: "500+", label: "Happy Clients" },
-                { number: "98%", label: "Success Rate" },
-                { number: "24/7", label: "Support" },
-                { number: "5★", label: "Rating" },
-              ].map((stat, index) => (
-                <div key={index} className="text-center group">
-                  <div className="text-2xl md:text-3xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600 font-medium text-sm">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+              EXPLORE SERVICES
+              <svg
+                className="w-5 h-5 ml-2 sm:ml-3 group-hover:translate-y-2 transition-transform duration-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </button>
           </div>
 
-          {/* Right Content - Image */}
+          {/* Cinematic Stats - Responsive Grid */}
           <div
-            className={`relative transform transition-all duration-1000 delay-400 ${isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"}`}
+            className={`hidden md:grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-8 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto transform transition-all duration-2000 delay-1200 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+            }`}
           >
-            <div className="relative">
-              {/* Main Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white p-4">
-                <img
-                  src={businessMainImg}
-                  alt="Professional financial consulting team working with charts and data"
-                  className="w-full h-full rounded-xl object-fill"
-                />
-
-                {/* Floating Cards */}
-                <div className="absolute -top-4 -left-4 bg-white rounded-xl shadow-lg p-4 animate-float">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-primary/80 rounded-lg flex items-center justify-center">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-800">Revenue Growth</div>
-                      <div className="text-xs text-gray-500">+24% this quarter</div>
-                    </div>
-                  </div>
+            {[
+              { number: "500+", label: "CLIENTS" },
+              { number: "98%", label: "SUCCESS" },
+              { number: "24/7", label: "SUPPORT" },
+              { number: "5★", label: "RATING" },
+            ].map((stat, index) => (
+              <div
+                key={index}
+                className="group text-center p-3 sm:p-6 rounded-lg sm:rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-accent/50 hover:bg-white/10 transition-all duration-500"
+                style={{
+                  transform: `translateX(${mousePosition.x * (index % 2 === 0 ? -3 : 3)}px)`,
+                  transition: "transform 0.1s ease-out, background-color 0.5s, border-color 0.5s",
+                }}
+              >
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-accent mb-1 sm:mb-2 group-hover:scale-125 transition-transform duration-500">
+                  {stat.number}
                 </div>
-
-                <div className="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-lg p-4 animate-float delay-1000">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-accent to-accent/80 rounded-lg flex items-center justify-center">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-800">Tax Savings</div>
-                      <div className="text-xs text-gray-500">$50,000 saved</div>
-                    </div>
-                  </div>
-                </div>
+                <div className="text-white/80 font-bold tracking-wider text-xs sm:text-sm">{stat.label}</div>
               </div>
-
-              {/* Background Decoration */}
-              <div className="absolute -z-10 top-8 left-8 w-full h-full bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl"></div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* Cinematic Scroll Indicator */}
+      <div
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+        style={{
+          transform: `translateX(-50%) translateY(${scrollY * 0.5}px)`,
+        }}
+      >
         <button
           onClick={scrollToServices}
-          className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center hover:border-primary/60 transition-colors duration-300"
+          className="w-12 h-12 sm:w-16 sm:h-16 bg-white/10 backdrop-blur-md border border-accent/30 rounded-full flex items-center justify-center hover:bg-accent/20 hover:scale-125 transition-all duration-500 group"
         >
-          <div className="w-1 h-3 bg-primary/60 rounded-full mt-2 animate-pulse"></div>
+          <svg
+            className="w-6 h-6 sm:w-8 sm:h-8 text-accent group-hover:text-white transition-colors duration-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </button>
+      </div>
+
+      {/* Cinematic Overlay Effects - Hidden on smallest screens */}
+      <div className="absolute inset-0 pointer-events-none hidden sm:block">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-60"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-60"></div>
+        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-accent to-transparent opacity-60"></div>
+        <div className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-transparent via-accent to-transparent opacity-60"></div>
       </div>
     </section>
   )

@@ -37,7 +37,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center h-26 mt-2">
+        <div className="flex justify-between items-center h-auto my-5">
           {/* Logo/Brand */}
           <Link
             to="/"
@@ -119,7 +119,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation Menu */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+          className={`lg:hidden overflow-hidden transition-all p-0 m-0 duration-500 ease-in-out ${
             isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
