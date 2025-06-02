@@ -37,9 +37,6 @@ const App = () => {
                     <Testimonials />
                   </div>
                   <div className="space-y-16 md:space-y-20 lg:space-y-24">
-                    <CallToAction />
-                  </div>
-                  <div className="space-y-16 md:space-y-20 lg:space-y-24">
                     <Faq />
                   </div>
                 </>

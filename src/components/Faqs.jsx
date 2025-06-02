@@ -16,13 +16,6 @@ const Faq = () => {
       tags: ["services", "tax", "consulting", "investment", "retirement"],
     },
     {
-      category: "Pricing",
-      question: "How much do your services cost?",
-      answer:
-        "Our pricing varies based on the complexity and scope of services required. We offer transparent, competitive pricing with no hidden fees. Basic tax preparation starts at $200, while comprehensive financial planning packages range from $1,500-$5,000 annually. During your free consultation, we'll provide a detailed quote tailored to your specific needs.",
-      tags: ["pricing", "cost", "fees", "consultation"],
-    },
-    {
       category: "Business",
       question: "Do you work with small businesses?",
       answer:
