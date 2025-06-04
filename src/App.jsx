@@ -5,11 +5,12 @@ import Footer from "./components/Footer"
 import About from "./components/About"
 import Services from "./components/Services"
 import Contact from "./pages/Contact"
-import ServicesPage from "./pages/ServicesPage"
 import AboutPage from "./pages/AboutPage"
 import Testimonials from "./components/Testimonials"
 import Faq from "./components/Faqs"
-import CallToAction from "./components/CallToAction"
+import AccountingPage from "./pages/AccountingPage"
+import AdvisoryPage from "./pages/AdvisoryPage"
+import TaxPage from "./pages/TaxPage"
 
 
 const App = () => {
@@ -24,7 +25,7 @@ const App = () => {
               path="/"
               element={
                 <>
-                  <div className="space-y-16 md:space-y-20 lg:space-y-24">
+                  <div className="py-2 space-y-16 md:space-y-20 lg:space-y-24">
                     <Hero />
                   </div>
                   <div className="space-y-16 md:space-y-20 lg:space-y-24">
@@ -46,23 +47,39 @@ const App = () => {
             <Route
               path="/about"
               element={
-                <div className="py-16 md:py-20 lg:py-24">
+                <div>
                   <AboutPage />
                 </div>
               }
             />
             <Route
-              path="/services"
+              path="/accounting"
               element={
-                <div className="py-16 md:py-20 lg:py-24">
-                  <ServicesPage />
+                <div>
+                  <AccountingPage />
+                </div>
+              }
+            />
+            <Route
+              path="/advisory"
+              element={
+                <div className="py-6 md:py-20 lg:py-24">
+                  <AdvisoryPage />
+                </div>
+              }
+            />
+            <Route
+              path="/tax"
+              element={
+                <div className="py-6 md:py-20 lg:py-24">
+                  <TaxPage />
                 </div>
               }
             />
             <Route
               path="/contact"
               element={
-                <div className="py-16 md:py-20 lg:py-24">
+                <div>
                   <Contact />
                 </div>
               }
@@ -70,7 +87,7 @@ const App = () => {
           </Routes>
         </main>
 
-        <div className="mt-16 md:mt-20 lg:mt-24">
+        <div className="mt-6">
           <Footer />
         </div>
       </div>

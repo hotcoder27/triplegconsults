@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 
 const Faq = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -113,29 +112,77 @@ const Faq = () => {
 
   return (
     <section id="enhanced-faq-section" className="pt-10 bg-white relative overflow-hidden">
-      {/* Background Elements */}
+      {/* Futuristic Background Elements */}
       <div className="absolute inset-0">
+        {/* Grid Pattern */}
+        <div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px), 
+                              linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px)`,
+            backgroundSize: "40px 40px",
+          }}
+        ></div>
+
+        {/* Geometric Accents */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+
+        {/* Corner Accents */}
+        <div className="absolute top-0 left-0 w-32 h-32 border-l-2 border-t-2 border-accent/20 opacity-30"></div>
+        <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-accent/20 opacity-30"></div>
+      </div>
+
+      {/* Subtle Animated Particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              backgroundColor: i % 3 === 0 ? "rgba(240, 180, 41, 0.6)" : "rgba(0, 0, 0, 0.2)",
+              boxShadow: i % 3 === 0 ? "0 0 8px rgba(240, 180, 41, 0.4)" : "0 0 6px rgba(0, 0, 0, 0.1)",
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.5 + 0.2,
+              animation: `floatParticle ${Math.random() * 15 + 10}s infinite linear`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          ></div>
+        ))}
       </div>
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div
-            className={`inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6 transform transition-all duration-1000 ${
+            className={`inline-flex items-center px-4 py-2 bg-white backdrop-blur-md border border-accent/30 text-primary font-medium text-sm mb-6 transform transition-all duration-1000 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
+            style={{
+              clipPath: "polygon(0 0, 100% 0, 95% 100%, 5% 100%)",
+              boxShadow: "0 0 20px rgba(240, 180, 41, 0.2)",
+            }}
           >
             <span className="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"></span>
             Frequently Asked Questions
           </div>
 
           <h2
-            className={`text-4xl md:text-5xl font-bold text-gray-800 mb-6 transform transition-all duration-1000 delay-200 ${
+            className={`text-4xl md:text-5xl font-bold mb-6 transform transition-all duration-1000 delay-200 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
+            style={{
+              background: "linear-gradient(135deg, #000000 0%, #f0b429 50%, #000000 100%)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              textShadow: "0 0 40px rgba(240, 180, 41, 0.2)",
+              fontFamily: "'Inter', sans-serif",
+              letterSpacing: "-0.02em",
+            }}
           >
             Got <span className="text-primary">Questions?</span> We Have <span className="text-accent">Answers</span>
           </h2>
@@ -149,7 +196,7 @@ const Faq = () => {
             specific information.
           </p>
 
-          {/* Search Bar */}
+          {/* Futuristic Search Bar */}
           <div
             className={`max-w-2xl mx-auto transform transition-all duration-1000 delay-600 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
@@ -161,25 +208,31 @@ const Faq = () => {
                 placeholder="Search FAQs..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-6 py-4 pl-12 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-300"
+                className="w-full px-6 py-4 pl-12 bg-gradient-to-r from-gray-50 to-white border border-accent/20 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent/50 transition-all duration-300"
+                style={{
+                  clipPath: "polygon(0 0, 100% 0, 98% 100%, 2% 100%)",
+                  boxShadow: "0 0 20px rgba(240, 180, 41, 0.1)",
+                }}
               />
-              <svg
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              <div
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-accent/10"
+                style={{
+                  clipPath: "polygon(0 0, 100% 0, 90% 100%, 10% 100%)",
+                }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
+                <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
 
-          {/* Category Filter */}
+          {/* Futuristic Category Filter */}
           <div
             className={`flex flex-wrap justify-center gap-3 mt-6 transform transition-all duration-1000 delay-800 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
@@ -187,11 +240,15 @@ const Faq = () => {
           >
             <button
               onClick={() => setSearchTerm("")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`px-4 py-2 text-sm font-medium transition-all duration-300 ${
                 searchTerm === ""
-                  ? "bg-primary text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-primary/10 hover:text-primary"
+                  ? "bg-accent text-primary"
+                  : "bg-gradient-to-r from-gray-100 to-white text-gray-600 hover:bg-accent/10 hover:text-accent border border-accent/20"
               }`}
+              style={{
+                clipPath: "polygon(5% 0, 95% 0, 100% 100%, 0% 100%)",
+                boxShadow: searchTerm === "" ? "0 0 15px rgba(240, 180, 41, 0.3)" : "0 0 10px rgba(240, 180, 41, 0.1)",
+              }}
             >
               All
             </button>
@@ -199,11 +256,18 @@ const Faq = () => {
               <button
                 key={category}
                 onClick={() => setSearchTerm(category.toLowerCase())}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`px-4 py-2 text-sm font-medium transition-all duration-300 ${
                   searchTerm.toLowerCase() === category.toLowerCase()
-                    ? "bg-primary text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-primary/10 hover:text-primary"
+                    ? "bg-accent text-primary"
+                    : "bg-gradient-to-r from-gray-100 to-white text-gray-600 hover:bg-accent/10 hover:text-accent border border-accent/20"
                 }`}
+                style={{
+                  clipPath: "polygon(5% 0, 95% 0, 100% 100%, 0% 100%)",
+                  boxShadow:
+                    searchTerm.toLowerCase() === category.toLowerCase()
+                      ? "0 0 15px rgba(240, 180, 41, 0.3)"
+                      : "0 0 10px rgba(240, 180, 41, 0.1)",
+                }}
               >
                 {category}
               </button>
@@ -212,41 +276,63 @@ const Faq = () => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          {/* FAQ Items */}
+          {/* Futuristic FAQ Items */}
           <div className="space-y-4 mb-12">
             {(searchTerm ? filteredFAQs : faqs).map((faq, index) => (
               <div
                 key={index}
-                className={`group bg-white border border-primary rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 transform ${
+                className={`group bg-white border border-accent/20 hover:border-accent/50 shadow-sm hover:shadow-lg transition-all duration-300 transform ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                 }`}
                 style={{
                   transitionDelay: isVisible ? `${1000 + index * 100}ms` : "0ms",
+                  clipPath: "polygon(0 0, 100% 0, 99% 100%, 1% 100%)",
+                  boxShadow: "0 0 20px rgba(240, 180, 41, 0.1)",
                 }}
               >
+                {/* Decorative corner accent */}
+                <div
+                  className="absolute top-0 right-0 w-8 h-8 bg-accent/20"
+                  style={{
+                    clipPath: "polygon(0 0, 100% 0, 100% 100%)",
+                  }}
+                ></div>
+
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full p-6 text-left focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl"
+                  className="w-full p-6 text-left focus:outline-none focus:ring-2 focus:ring-accent/20 relative"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1 pr-4">
                       <div className="flex items-center mb-2">
-                        <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full mr-3">
+                        <span
+                          className="inline-block px-3 py-1 text-primary text-xs font-medium mr-3"
+                          style={{
+                            clipPath: "polygon(0 0, 100% 0, 90% 100%, 10% 100%)",
+                            background: "rgba(240, 180, 41, 0.1)",
+                            boxShadow: "0 0 10px rgba(240, 180, 41, 0.2)",
+                          }}
+                        >
                           {faq.category}
                         </span>
                       </div>
-                      <h3 className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-lg font-semibold text-primary group-hover:text-accent transition-colors duration-300">
                         {faq.question}
                       </h3>
                     </div>
                     <div
-                      className={`flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                        openFAQ === index ? "bg-primary rotate-45" : "group-hover:bg-primary/20"
+                      className={`flex-shrink-0 w-8 h-8 flex items-center justify-center transition-all duration-300 ${
+                        openFAQ === index ? "bg-accent rotate-45" : "bg-accent/10 group-hover:bg-accent/20"
                       }`}
+                      style={{
+                        clipPath: "polygon(10% 0, 90% 0, 100% 100%, 0% 100%)",
+                        boxShadow:
+                          openFAQ === index ? "0 0 15px rgba(240, 180, 41, 0.4)" : "0 0 10px rgba(240, 180, 41, 0.2)",
+                      }}
                     >
                       <svg
                         className={`w-4 h-4 transition-colors duration-300 ${
-                          openFAQ === index ? "text-white" : "text-primary"
+                          openFAQ === index ? "text-primary" : "text-accent"
                         }`}
                         fill="none"
                         stroke="currentColor"
@@ -268,13 +354,18 @@ const Faq = () => {
                   }`}
                 >
                   <div className="px-6">
-                    <div className="border-t border-gray-100 pt-4">
+                    <div className="border-t border-accent/20 pt-4">
                       <p className="text-gray-600 leading-relaxed mb-4">{faq.answer}</p>
                       <div className="flex flex-wrap gap-2">
                         {faq.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="inline-block px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md"
+                            className="inline-block px-2 py-1 text-gray-600 text-xs"
+                            style={{
+                              clipPath: "polygon(5% 0, 95% 0, 100% 100%, 0% 100%)",
+                              background: "rgba(240, 180, 41, 0.1)",
+                              boxShadow: "0 0 5px rgba(240, 180, 41, 0.1)",
+                            }}
                           >
                             #{tag}
                           </span>
@@ -290,23 +381,61 @@ const Faq = () => {
           {/* No Results */}
           {searchTerm && filteredFAQs.length === 0 && (
             <div className="text-center py-12">
-              <div className="text-6xl mb-4">🔍</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">No results found</h3>
+              <div
+                className="w-24 h-24 mx-auto mb-4 flex items-center justify-center bg-accent/10"
+                style={{
+                  clipPath: "polygon(10% 0, 90% 0, 100% 100%, 0% 100%)",
+                  boxShadow: "0 0 20px rgba(240, 180, 41, 0.2)",
+                }}
+              >
+                <svg className="w-12 h-12 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-primary mb-2">No results found</h3>
               <p className="text-gray-600 mb-4">
                 We couldn't find any FAQs matching "{searchTerm}". Try a different search term or browse all questions.
               </p>
               <button
                 onClick={() => setSearchTerm("")}
-                className="inline-flex items-center bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300"
+                className="inline-flex items-center bg-accent text-primary px-6 py-3 font-semibold hover:bg-accent/90 transition-all duration-300"
+                style={{
+                  clipPath: "polygon(0 0, 100% 0, 95% 100%, 5% 100%)",
+                  boxShadow: "0 0 20px rgba(240, 180, 41, 0.3)",
+                }}
               >
                 View All FAQs
               </button>
             </div>
           )}
-
-          
         </div>
       </div>
+
+      {/* Add keyframes for particle animation */}
+      <style jsx>{`
+        @keyframes floatParticle {
+          0% {
+            transform: translate(0, 0);
+          }
+          25% {
+            transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px);
+          }
+          50% {
+            transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px);
+          }
+          75% {
+            transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px);
+          }
+          100% {
+            transform: translate(0, 0);
+          }
+        }
+      `}</style>
     </section>
   )
 }
