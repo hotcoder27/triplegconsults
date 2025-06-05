@@ -63,7 +63,7 @@ const App = () => {
             <Route
               path="/advisory"
               element={
-                <div className="py-6 md:py-20 lg:py-24">
+                <div>
                   <AdvisoryPage />
                 </div>
               }
@@ -71,7 +71,7 @@ const App = () => {
             <Route
               path="/tax"
               element={
-                <div className="py-6 md:py-20 lg:py-24">
+                <div>
                   <TaxPage />
                 </div>
               }
