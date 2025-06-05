@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 871.96 244.92">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-2 {
+        letter-spacing: -.12em;
+      }
+
+      .cls-3 {
+        letter-spacing: -.08em;
+      }
+
+      .cls-4 {
+        letter-spacing: -.06em;
+      }
+
+      .cls-5 {
+        letter-spacing: -.09em;
+      }
+
+      .cls-6 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-7 {
+        font-family: Satoshi-Bold, Satoshi;
+        font-size: 94.66px;
+        font-weight: 700;
+      }
+
+      .cls-7, .cls-8, .cls-9 {
+        fill: #17365d;
+      }
+
+      .cls-10 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-11 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-12 {
+        letter-spacing: 0em;
+      }
+
+      .cls-9 {
+        font-family: Satoshi-Medium, Satoshi;
+        font-size: 43.87px;
+        font-weight: 500;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="cls-8" d="m199.37,122.01l-7.04-7.02-7.48-7.48h-26.09v-26.1l-12.58-12.56v-.02l-13.13-13.13h-29.75v-29.75L81.26,3.9H0v29.39h65.26v22.4h-13.61v29.39h13.61v22.42H0v29.39h78.13l25.17-25.19v25.19h13.05v21.92H51.65v29.39h81.52l25.6-25.6v-25.71h9.53v74.72h-65v29.39h79.76l27.65-27.65v-80l-11.34-11.36Zm-83.02-14.5h-13.05v-22.42h13.05v22.42Z"/>
+      <g>
+        <text class="cls-7" transform="translate(266.26 81.93)"><tspan class="cls-11"><tspan x="0" y="0">TRIPLE G</tspan></tspan><tspan class="cls-12" x="0" y="91.28">CO</tspan><tspan class="cls-10" x="144.35" y="91.28">N</tspan><tspan class="cls-11" x="214.4" y="91.28">SU</tspan><tspan class="cls-5" x="337.73" y="91.28">L</tspan><tspan class="cls-12" x="380.42" y="91.28">TING</tspan></text>
+        <text class="cls-9" transform="translate(266.26 234.7)"><tspan class="cls-3" x="0" y="0">A</tspan><tspan class="cls-1" x="25.45" y="0">CCOUNTING | </tspan><tspan class="cls-2" x="302.07" y="0">T</tspan><tspan class="cls-6" x="321.68" y="0">AX | A</tspan><tspan class="cls-3" x="433.03" y="0">D</tspan><tspan class="cls-1" x="461.11" y="0">VISO</tspan><tspan class="cls-4" x="552.81" y="0">R</tspan><tspan class="cls-6" x="578.69" y="0">Y</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

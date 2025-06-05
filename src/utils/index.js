@@ -4,6 +4,7 @@ import businesspress from "/assets/img/businesspress.jpg";
 import meet from "/assets/img/meet.jpg";
 import meets from "/assets/img/meets.jpg";
 import bussdp from "/assets/img/bussdp.jpg";
+import tripleg from "/assets/img/tripleg.svg";
 
 export const logoImg = logo;
 export const businessMainImg = businessmain;
@@ -11,3 +12,4 @@ export const businesspressImg = businesspress
 export const meetImg = meet;
 export const meetsImg = meets;
 export const bussdpImg = bussdp;
+export const triplegImg = tripleg

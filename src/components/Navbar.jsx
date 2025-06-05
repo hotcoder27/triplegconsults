@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { NAV_LINKS, SITE_NAME } from "../constants"
-import { logoImg } from "../utils"
+import { logoImg, triplegImg } from "../utils"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -75,7 +75,7 @@ const Navbar = () => {
               }}
             >
               <img
-                src={logoImg || "/placeholder.svg"}
+                src={triplegImg || "/placeholder.svg"}
                 alt={`${SITE_NAME} Logo`}
                 className="w-full h-full object-fill p-2"
                 style={{
