@@ -126,8 +126,8 @@ const AboutPage = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-8 text-accent">Lifting the Burden, Fueling Your Growth</h2>
             <div className="prose prose-lg text-gray-600 leading-relaxed">
               <p className="mb-6">
-                Every business owner deserves the freedom to focus on what truly drives success—innovation, customer
-                relationships, and strategic growth—not the daily grind of books and accounts. That's where Triple G
+                Every business owner deserves the freedom to focus on what truly drives success, innovation, customer
+                relationships, and strategic growth not the daily grind of books and accounts. That's where Triple G
                 Consult comes in.
               </p>
               <p className="mb-6">
@@ -137,8 +137,8 @@ const AboutPage = () => {
               </p>
               <p className="mb-6">
                 With decades of combined experience, our team has earned a reputation for delivering dependable,
-                forward-thinking accounting, tax, and advisory services. We support a diverse client base—from startups
-                and family-run enterprises to nonprofits and high-net-worth individuals—offering tailored solutions that
+                forward-thinking accounting, tax, and advisory services. We support a diverse client base from startups
+                and family-run enterprises to nonprofits and high-net-worth individuals offering tailored solutions that
                 make sense for your unique goals.
               </p>
               <p className="mb-6">
@@ -148,7 +148,7 @@ const AboutPage = () => {
                 business journey.
               </p>
               <p className="font-medium text-primary">
-                At Triple G Consult, we don't just manage your numbers—we help you reclaim your time, reduce stress, and
+                At Triple G Consult, we don't just manage your numbers, we help you reclaim your time, reduce stress, and
                 stay focused on building the future you envision. Let us handle the back office, so you can lead from
                 the front.
               </p>
